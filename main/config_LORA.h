@@ -38,9 +38,9 @@ extern void MQTTtoLORA(char* topicOri, JsonObject& RFdata);
 //Default parameters used when the parameters are not set in the json data
 #define LORA_BAND             868E6
 #define LORA_SIGNAL_BANDWIDTH 125E3
-#define LORA_TX_POWER         17
-#define LORA_SPREADING_FACTOR 7
-#define LORA_CODING_RATE      5
+#define LORA_TX_POWER         10
+#define LORA_SPREADING_FACTOR 9
+#define LORA_CODING_RATE      7
 #define LORA_PREAMBLE_LENGTH  8
 #define LORA_SYNC_WORD        0x12
 #define DEFAULT_CRC           true
@@ -53,7 +53,7 @@ extern void MQTTtoLORA(char* topicOri, JsonObject& RFdata);
 #define LORA_MISO 19 // GPIO19 -- SX1278's MISO
 #define LORA_MOSI 27 // GPIO27 -- SX1278's MOSI
 #define LORA_SS   18 // GPIO18 -- SX1278's CS
-#define LORA_RST  14 // GPIO14 -- SX1278's RESET
+#define LORA_RST  16 // GPIO14 -- SX1278's RESET
 #define LORA_DI0  26 // GPIO26 -- SX1278's IRQ(Interrupt Request)
 
 #endif

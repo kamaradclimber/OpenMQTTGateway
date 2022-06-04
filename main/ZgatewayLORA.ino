@@ -49,12 +49,28 @@ void setupLORA() {
   Log.notice(F("LORA_SS: %d" CR), LORA_SS);
   Log.notice(F("LORA_RST: %d" CR), LORA_RST);
   Log.notice(F("LORA_DI0: %d" CR), LORA_DI0);
+    int txPower = LORA_TX_POWER;
+    int spreadingFactor = LORA_SPREADING_FACTOR;
+    long int frequency = LORA_BAND;
+    long int signalBandwidth = LORA_SIGNAL_BANDWIDTH;
+    int codingRateDenominator = LORA_CODING_RATE;
+    int preambleLength = LORA_PREAMBLE_LENGTH;
+    byte syncWord = LORA_SYNC_WORD;
+    bool Crc = DEFAULT_CRC;
+      LoRa.setTxPower(txPower);
+      LoRa.setFrequency(frequency);
+      LoRa.setSpreadingFactor(spreadingFactor);
+      LoRa.setSignalBandwidth(signalBandwidth);
+      LoRa.setCodingRate4(codingRateDenominator);
+      LoRa.setPreambleLength(preambleLength);
+      LoRa.setSyncWord(syncWord);
   Log.trace(F("ZgatewayLORA setup done" CR));
 }
 
 void LORAtoMQTT() {
   int packetSize = LoRa.parsePacket();
   if (packetSize) {
+    Log.notice(F("Received LORA packet" CR));
     StaticJsonDocument<JSON_MSG_BUFFER> jsonBuffer;
     JsonObject LORAdata = jsonBuffer.to<JsonObject>();
     Log.trace(F("Rcv. LORA" CR));
